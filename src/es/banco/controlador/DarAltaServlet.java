@@ -44,15 +44,21 @@ public class DarAltaServlet extends HttpServlet {
 		}
 		String numeroComprobacion=request.getParameter("numeroComprobacion");
 		String contrasenha=request.getParameter("contrasenha");
-		
+		String n="";
 		Negocio negocio= new Negocio();
-		int id=negocio.DarAlta(numero, cupoMaximo, cupoDisponible, tipoBBDD, numeroComprobacion, contrasenha);
-		TarjetaCredito e=negocio.consultarUno(id);
-		request.setAttribute("coche",e);
+	  //int id=negocio.DarAlta(numero, cupoMaximo, cupoDisponible, tipoBBDD, numeroComprobacion, contrasenha);
+		n=negocio.DarAlta(numero, cupoMaximo, cupoDisponible, tipoBBDD, numeroComprobacion, contrasenha);
+		//TarjetaCredito e=negocio.consultarUno(id);
+		//request.setAttribute("tarjetacredito",e);
 		//redirigir a la vistaIndividual
-		RequestDispatcher rd;
-		rd= request.getRequestDispatcher("vistaIndividual.jsp");
+		//RequestDispatcher rd;
+		//rd= request.getRequestDispatcher("vistaIndividual.jsp");
+		//rd.forward(request, response);
+		
+		request.setAttribute("mensaje", n);
+		RequestDispatcher rd=request.getRequestDispatcher("vistaMensaje.jsp");
 		rd.forward(request, response);
+		
 	}
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

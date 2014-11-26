@@ -11,11 +11,14 @@ public class Negocio
 {
 	private TarjetaCreditoDAO tarjetacreditodao = TarjetaCreditoDAO.getInstance();
 	
-	public int DarAlta(String numero, int cupoMaximo, int cupoDisponible, String tipo, String numeroComprobacion, String contrasenha)
+	public String DarAlta(String numero, int cupoMaximo, int cupoDisponible, String tipo, String numeroComprobacion, String contrasenha)
 	{     
-		  TarjetaCredito tarjetacredito= new TarjetaCredito(numero, cupoMaximo, cupoDisponible, tipo, numeroComprobacion, contrasenha);
-	      int id = tarjetacreditodao.darAlta(tarjetacredito);
-	      return  id;
+		  String msg;
+	      TarjetaCredito tarjetacredito= new TarjetaCredito(numero, cupoMaximo, cupoDisponible, tipo, numeroComprobacion, contrasenha);
+	      int tarjetasinsertadas=tarjetacreditodao.darAlta(tarjetacredito);
+		  msg="Tarjetas dadas de alta :" + tarjetasinsertadas;
+		  return msg;
+		  
 	}
 	
 	public TarjetaCredito consultarUno(int id) 

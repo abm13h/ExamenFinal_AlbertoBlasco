@@ -12,7 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-import es.concesionario.modelo.Coche;
+import es.banco.modelo.TarjetaCredito;
 
 public class TarjetaCreditoDAO {
     
@@ -91,41 +91,41 @@ public class TarjetaCreditoDAO {
 	              }
 	         return id;
 	    }
-	    //public TarjetaCredito consultarUno(int id) {
-	       //TarjetaCredito p = new TarjetaCredito();
-	        // try {
+	       
+	    public TarjetaCredito consultarUno(int id) {
+	       TarjetaCredito p = new TarjetaCredito();
+	         try {
 	          //1. conectar
-	        	   //  conectar();
+	        	     conectar();
 	          //2. preparar la consulta
-	            //   PreparedStatement ps;
-	            //   ps = cx.prepareStatement("SELECT * FROM COCHE WHERE ID=?");
-	            //  // 2.1 setear los ?
-	            //       ps.setInt(1, id);
-	                //  // 3, ejecutar la consulta
-	                //    ResultSet rs =ps.executeQuery();  
-	             //   //4. llenar el objeto coche.. con los datos de respuesta de BBDD..
-	             //       //Nota: La respuesta viene en un objeto ResultSet
-	             //     if(rs.next()) {
-	            	 //         p.setId(rs.getInt("id"));
-	                 //         p.setMatricula(rs.getString("matricula"));
-	                 //          p.setMarca(rs.getString("marca"));
-	                 //          p.setModelo(rs.getString("modelo"));
-	                 //          p.setColor(rs.getString("color"));
-	                 //          p.setNumCaballos(rs.getInt("numCaballos"));
-	                 //          p.setMarchas(rs.getBoolean("marchas"));
-	                 
-	                 //      }
+	               PreparedStatement ps;
+	               ps = cx.prepareStatement("SELECT * FROM banco WHERE ID=?");
+	              // 2.1 setear los ?
+	                   ps.setInt(1, id);
+	                  // 3, ejecutar la consulta
+	                    ResultSet rs =ps.executeQuery();  
+	                //4. llenar el objeto coche.. con los datos de respuesta de BBDD..
+	                    //Nota: La respuesta viene en un objeto ResultSet
+	                  if(rs.next()) {
+	                           p.setNumero(rs.getString("numero"));
+	                           p.setCupoMaximo(rs.getInt("cupoMaximo"));
+	                           p.setCupoDisponible(rs.getInt("cupoDisponible"));
+	                           p.setTipo(rs.getString("tipo"));
+	                           p.setNumeroComprobacion(rs.getString("numeroComprobacion"));
+	                           p.setContrasenha(rs.getString("contrasenha"));
+	            	           p.setId(rs.getInt("id"));
+	                       }
 	          
-	       //} catch (SQLException e) {
-	       //     // TODO Auto-generated catch block
-	       //     Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "Error SQL ", e);
-	       // }
-	       //    finally {
-	       //        //5.desconectar
-	       //          desconectar();
-	       //    }
-	       //return p;
-	       //}
+	       } catch (SQLException e) {
+	            // TODO Auto-generated catch block
+	            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "Error SQL ", e);
+	        }
+	           finally {
+	               //5.desconectar
+	                 desconectar();
+	           }
+	       return p;
+	       }
 	    
 	       //public ArrayList<TarjetaCredito> consultarTodos() {
 	       // ArrayList<TarjetaCredito> coches= new ArrayList<TarjetaCredito>();
@@ -248,7 +248,7 @@ public class TarjetaCreditoDAO {
 	    	int filasAfectada=0;
 	    	try {
 	    		conectar();
-	    		PreparedStatement ps = cx.prepareStatement("UPDATE banco SET numero=?, cupoMaximo=?, cupoDisponible=?, tipo=?, NUMCABALLOS=?, numeroComprobacion=?, contrasenha=?  WHERE ID=?");
+	    		PreparedStatement ps = cx.prepareStatement("UPDATE banco SET numero=?, cupoMaximo=?, cupoDisponible=?, tipo=?, numeroComprobacion=?, contrasenha=?  WHERE ID=?");
 	    		ps.setString(1, numero);
 	    		ps.setInt(2, cupoMaximo);
 	    		ps.setInt(3, cupoDisponible);

@@ -7,22 +7,24 @@ import javax.jws.WebService;
 import es.banco.integracion.TarjetaCreditoDAO;
 import es.banco.modelo.TarjetaCredito;
 
-
-public class Negocio {
-	private TarjetaCreditoDAO tarjetacredito = TarjetaCreditoDAO.getInstance();
+public class Negocio 
+{
+	private TarjetaCreditoDAO tarjetacreditodao = TarjetaCreditoDAO.getInstance();
 	
-	public int DarAlta(String numero, int cupoMaximo, int cupoDisponible, String tipo, String numeroComprobacion, String contrasenha){
-		  TarjetaCredito tarjetacredito= new TarjetaCredito(numero, cupoMaximo, cupoDisponible, numeroComprobacion, tipo, numeroComprobacion, contrasenha);
-	      int id=tarjetacreditodao.darAlta(tarjetacredito);
+	public int DarAlta(String numero, int cupoMaximo, int cupoDisponible, String tipo, String numeroComprobacion, String contrasenha)
+	{     
+		  TarjetaCredito tarjetacredito= new TarjetaCredito(numero, cupoMaximo, cupoDisponible, tipo, numeroComprobacion, contrasenha);
+	      int id = tarjetacreditodao.darAlta(tarjetacredito);
 	      return  id;
 	}
 	
-	//public TarjetaCredito consultarUno(int id) {
-	//       // validar si el q solicita la consulta tiene autorizacion
-	//        TarjetaCredito tarjetacredito =tarjetacreditodao.consultarUno(id);
-	//      
-	//        return tarjetacredito;
-	//}
+	public TarjetaCredito consultarUno(int id) 
+	{
+	       // validar si el q solicita la consulta tiene autorizacion
+	        TarjetaCredito tarjetacredito = tarjetacreditodao.consultarUno(id);
+	      
+	        return tarjetacredito;
+	}
 
           //public ArrayList<TarjetaCredito> consultarTodos() {
             // //reglas...

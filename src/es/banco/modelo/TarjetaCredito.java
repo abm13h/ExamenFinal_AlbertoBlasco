@@ -16,8 +16,7 @@ public class TarjetaCredito {
 			                 int cupoDisponible,
 			              String numeroComprobacion, 
 			              String tipo, 
-			              String contrasenha,
-			              int id) {
+			              String contrasenha) {
 		super();
 		this.numero = numero;
 		this.cupoMaximo = cupoMaximo;
@@ -25,7 +24,7 @@ public class TarjetaCredito {
 		this.tipo = tipo;
 		this.numeroComprobacion = numeroComprobacion;
 		this.contrasenha = contrasenha;
-		this.id = id;
+		
 	}
 	
 	public TarjetaCredito(){

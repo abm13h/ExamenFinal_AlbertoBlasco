@@ -38,24 +38,14 @@ public class Negocio
 	//    return coches;
 	//}
 
-	//public String borrar(int id) {
-	//	String msg;
-			//	int cochesBorrados=cochedao.borrar(id);
-			//	if(cochesBorrados>=1){
-				//		msg="SE HAN BORRADO"+cochesBorrados +"coches";
-				//	}else{
-				//		msg="No se ha podido borrar";
-				//	}
-			//	return msg;
-			//}
 		
-	//public String actualizar(int id, String matricula, String marca, String modelo,
-	//			String color, int numCaballos, boolean marchas) {
-	//		String msg;
-	//		int cochesactualizados=cochedao.actualizar(id,matricula,marca,modelo,color,numCaballos,marchas);
-	//			msg="Coches actualizados :"+cochesactualizados;
-	//		return msg;
-	//	}
+	public String actualizar(int cupoDisponible,
+				             int id) {
+			String msg;
+			int tarjetasactualizadas=tarjetacreditodao.actualizar(cupoDisponible, id);
+				msg="Tarjetas actualizadas :" + tarjetasactualizadas;
+			return msg;
+		}
 		
 
 }

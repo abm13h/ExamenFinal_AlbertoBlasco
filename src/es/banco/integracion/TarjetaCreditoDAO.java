@@ -243,19 +243,14 @@ public class TarjetaCreditoDAO {
 	    //	return filasAfectada;
 	    //}
 	    
-	    public int actualizar(String numero, int cupoMaximo, int cupoDisponible,
-	    		String tipo, String numeroComprobacion, String contrasenha, int id) {
+	    public int actualizar(int cupoDisponible,
+	    		              int id) {
 	    	int filasAfectada=0;
 	    	try {
 	    		conectar();
-	    		PreparedStatement ps = cx.prepareStatement("UPDATE banco SET numero=?, cupoMaximo=?, cupoDisponible=?, tipo=?, numeroComprobacion=?, contrasenha=?  WHERE ID=?");
-	    		ps.setString(1, numero);
-	    		ps.setInt(2, cupoMaximo);
-	    		ps.setInt(3, cupoDisponible);
-	    		ps.setString(4, tipo);
-	    		ps.setString(5, numeroComprobacion);
-	    		ps.setString (6, contrasenha);
-	    		ps.setInt(7, id);
+	    		PreparedStatement ps = cx.prepareStatement("UPDATE banco SET cupoDisponible=? WHERE ID=?");
+	    		ps.setInt(1, cupoDisponible);
+	    		ps.setInt(2, id);
 	    		filasAfectada=ps.executeUpdate();
 	    		cx.commit();
 	    	

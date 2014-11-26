@@ -1,0 +1,42 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@page import="es.banco.modelo.TarjetaCredito"%>
+    
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Vista Individual</title>
+<link rel="stylesheet" type="text/css" href="css/estilo.css"/>
+</head>
+<body>
+<form action="Procesar" method="get">
+ <% TarjetaCredito tarjetacredito = (TarjetaCredito)request.getAttribute("tarjetacredito"); %>
+<table>
+    <tr>
+      <th>Número</th>
+      <th>Cupo Máximo</th>
+      <th>Cupo Disponible</th>
+      <th>Tipo</th>
+      <th>Numero de Comprobación</th>
+      <th>Contraseña</th>
+      <th>Id</th>
+   </tr>
+   <tr>
+      <td><input type="text" name="numero" value="<%=tarjetacredito.getNumero() %>" readonly="readonly"/></td>
+      <td><input type="text" name="cupoMaximo" value="<%=tarjetacredito.getCupoMaximo() %>" readonly="readonly"/></td>
+      <td><input type="text" name="cupoDisponible" value="<%=tarjetacredito.getCupoDisponible() %>"/></td>
+      <td><input type="text" name="tipo" value="<%=tarjetacredito.getTipo() %>" readonly="readonly"/></td>
+      <td><input type="text" name="numeroComprobacion" value="<%=tarjetacredito.getNumeroComprobacion() %>" readonly="readonly"/></td>
+      <td><input type="text" name="contrasenha" value="<%=tarjetacredito.getContrasenha() %>" readonly="readonly"/></td>
+      <td><input type="text" name="id" value="<%=tarjetacredito.getId() %>" readonly="readonly"/></td>  
+  </tr>
+</table>
+ <input class="botones" type="submit" value="Actualizar" id="actualizar" name="actualizar"/>
+</form>
+  <a href="index.html">Ir a inicio</a>
+</body>
+</html>
+      
+
+        

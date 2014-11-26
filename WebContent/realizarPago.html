@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Realizar un pago con una tarjeta de credito</title>
+<link rel="stylesheet" type="text/css" href="css/estilo.css"/>
+</head>
+<body>
+   <form method="get" action="realizarPago" name="realizarPago" id="realizarPago">
+   <h1>Opción del menú para realizar un pago con una tarjeta de crédito.</h1> 
+   <br/><br/>
+   <label for="numero">Número de la T.C. :</label> 
+        <input type="text" name="numero" id="numero"  required="required" maxlength="12" /><br/>
+        <br/>
+   <label for="contrasenha">Password/Contraseña :</label>
+        <input type="text" name="contrasenha" id="contrasenha" /><br/>
+        <br/>
+   <label for="numeroComprobacion">Código de verificación :</label>
+        <input type="number" name="numeroComprobacion" id="numeroComprobacion"/><br/>
+        <br/>
+   <label for="importe">Importe de la compra   :</label>
+        <input type="number" name="importe" id="importe" /><br/>
+        <br/>
+   <input class="botones" type="submit" name="enviar" id="enviar" value="Enviar"/>
+ 
+</form>
+ 
+</body>
+</html>

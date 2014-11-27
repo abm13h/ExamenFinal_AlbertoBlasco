@@ -50,17 +50,28 @@ public class Negocio
 			return msg;
 		}
 
-	public String comprobarPago(String numero, 
-			                    String contrasenha,
-			                    String numeroComprobacion, 
-			                    int importe) 
+	public TarjetaParaPago comprobarPago(String numero, 
+			             String contrasenha,
+			             String numeroComprobacion, 
+			             int importe) 
 	{
-	    String tarjetacompra = tarjetacreditodao.consultarNumero(numero);
-        return tarjetacompra;
-		
-		
-		
-	}
-		
-
+	    
+	    TarjetaParaPago tarjetaparapago = tarjetacreditodao.consultarNumero(numero);
+	    return tarjetaparapago;
+	    
+	    // Si el numero de tarjeta es correcto, comprobar 
+	    // si el resto de datos tecleados son correctos:
+	    // si la contraseña
+	    
+	    //String msg;
+	    //if(tarjetacompra.isEmpty()){
+	    //	msg="El número de la tarjeta no existe.";
+	    //}else{
+	    //	msg="El número de la tarjeta sí existe.";
+	    //}
+	    //return msg;
+	    	
+	} 
+	    //return tarjetacompra;
 }
+

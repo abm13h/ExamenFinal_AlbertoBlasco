@@ -278,8 +278,10 @@ public class TarjetaCreditoDAO {
             }
 	    	return filasAfectada;
 	    }
-		public String consultarNumero(String numero) {
-			TarjetaParaPago cn = new TarjetaParaPago();
+	    
+	    
+		public TarjetaParaPago consultarNumero(String numero) {
+			   TarjetaParaPago cn = new TarjetaParaPago();
 	        try {
 	          //1. conectar
 	        	     conectar();
@@ -292,7 +294,8 @@ public class TarjetaCreditoDAO {
 	                    ResultSet rs =ps.executeQuery();  
 	                //4. llenar el objeto coche.. con los datos de respuesta de BBDD..
 	                    //Nota: La respuesta viene en un objeto ResultSet
-	                  if(rs.next()) {
+	                  if(rs.next()) 
+	                  {
 	                	  cn.setNumero(rs.getString("numero"));
 	                	  cn.setCupoMaximo(rs.getInt("cupoMaximo"));
 	                	  cn.setCupoDisponible(rs.getInt("cupoDisponible"));
@@ -300,15 +303,16 @@ public class TarjetaCreditoDAO {
 	                	  cn.setNumeroComprobacion(rs.getString("numeroComprobacion"));
 	                	  cn.setContrasenha(rs.getString("contrasenha"));
 	                	  cn.setId(rs.getInt("id"));
-	                       }
+	                   }
 	          
 	       } catch (SQLException e) {
 	            // TODO Auto-generated catch block
 	            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "Error SQL ", e);
 	        }
-	           finally {
+	           finally 
+	           {
 	               //5.desconectar
-	                 desconectar();
+	               desconectar();
 	           }
 	       return cn;
 	       

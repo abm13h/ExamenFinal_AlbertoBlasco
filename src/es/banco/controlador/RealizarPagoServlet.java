@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import es.banco.modelo.Negocio;
+import es.banco.modelo.TarjetaCredito;
+import es.banco.modelo.TarjetaParaPago;
+
 
 /**
  * Servlet implementation class RealizarPagoServlet
@@ -41,12 +44,11 @@ public class RealizarPagoServlet extends HttpServlet {
 		
 		String comprobarPago=request.getParameter("enviar");
 		Negocio negocio= new Negocio();
-		String n="";
+		TarjetaParaPago tarjetaparapago=negocio.comprobarPago(numero, contrasenha, numeroComprobacion, importe);
 		
-		if(comprobarPago!=null)
-		{
-			n=negocio.comprobarPago(numero, contrasenha, numeroComprobacion, importe);
-		}
+		// meter la tarjeta en el request.. uso el metodo setAttribute
+	    request.setAttribute("tarjetaparapago", tarjetaparapago);
+	    String n="codigo sin terminar";
 		//String mensaje=negocio.actualizar(id,matricula,marca,modelo,color,numCaballos,marchas);
 		request.setAttribute("mensaje", n);
 		RequestDispatcher rd=request.getRequestDispatcher("vistaMensaje.jsp");

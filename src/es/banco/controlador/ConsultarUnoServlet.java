@@ -38,10 +38,11 @@ public class ConsultarUnoServlet extends HttpServlet {
 	    Negocio negocio = new Negocio();
 	    TarjetaCredito tarjetacredito =negocio.consultarUno(id);
 	    
-	    // meter el pais en el request.. uso el metodo setAttribute
+	    // meter la tarjeta en el request.. uso el metodo setAttribute
 	    request.setAttribute("tarjetacredito", tarjetacredito);
 	    // Redirigir hacia la pagina jsp que muestra los datos del pais.
 	    RequestDispatcher rd;
+	    
 	    rd=request.getRequestDispatcher("vistaIndividual.jsp");
 	    rd.forward(request, response);
 		}

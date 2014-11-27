@@ -13,7 +13,15 @@ import java.util.logging.Logger;
 
 
 
+
+
+
+
+
+
+
 import es.banco.modelo.TarjetaCredito;
+import es.banco.modelo.TarjetaParaPago;
 
 public class TarjetaCreditoDAO {
     
@@ -270,6 +278,41 @@ public class TarjetaCreditoDAO {
             }
 	    	return filasAfectada;
 	    }
+		public String consultarNumero(String numero) {
+			TarjetaParaPago cn = new TarjetaParaPago();
+	        try {
+	          //1. conectar
+	        	     conectar();
+	          //2. preparar la consulta
+	               PreparedStatement ps;
+	               ps = cx.prepareStatement("SELECT * FROM tarjetacredito WHERE numero=?");
+	              // 2.1 setear los ?
+	                   ps.setString(1, numero);
+	                  // 3, ejecutar la consulta
+	                    ResultSet rs =ps.executeQuery();  
+	                //4. llenar el objeto coche.. con los datos de respuesta de BBDD..
+	                    //Nota: La respuesta viene en un objeto ResultSet
+	                  if(rs.next()) {
+	                	  cn.setNumero(rs.getString("numero"));
+	                	  cn.setCupoMaximo(rs.getInt("cupoMaximo"));
+	                	  cn.setCupoDisponible(rs.getInt("cupoDisponible"));
+	                	  cn.setTipo(rs.getString("tipo"));
+	                	  cn.setNumeroComprobacion(rs.getString("numeroComprobacion"));
+	                	  cn.setContrasenha(rs.getString("contrasenha"));
+	                	  cn.setId(rs.getInt("id"));
+	                       }
+	          
+	       } catch (SQLException e) {
+	            // TODO Auto-generated catch block
+	            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "Error SQL ", e);
+	        }
+	           finally {
+	               //5.desconectar
+	                 desconectar();
+	           }
+	       return cn;
+	       
+		}
 }
 	    			
 	    	

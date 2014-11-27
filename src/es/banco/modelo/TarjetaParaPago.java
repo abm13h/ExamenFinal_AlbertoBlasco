@@ -1,6 +1,6 @@
 package es.banco.modelo;
 
-public class TarjetaCredito {
+public class TarjetaParaPago {
 	private String numero;
 	private int cupoMaximo;
 	private int cupoDisponible;
@@ -11,7 +11,7 @@ public class TarjetaCredito {
 
 	//constructores
 	
-	public TarjetaCredito(String numero, 
+	public TarjetaParaPago(String numero, 
 			                 int cupoMaximo, 
 			                 int cupoDisponible,
 			              String numeroComprobacion, 
@@ -27,7 +27,7 @@ public class TarjetaCredito {
 		
 	}
 	
-	public TarjetaCredito(){
+	public TarjetaParaPago(){
 		super();
 	}
 	

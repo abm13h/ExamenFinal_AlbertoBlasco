@@ -49,6 +49,18 @@ public class Negocio
 				msg="Tarjetas actualizadas :" + tarjetasactualizadas;
 			return msg;
 		}
+
+	public String comprobarPago(String numero, 
+			                    String contrasenha,
+			                    String numeroComprobacion, 
+			                    int importe) 
+	{
+	    String tarjetacompra = tarjetacreditodao.consultarNumero(numero);
+        return tarjetacompra;
+		
+		
+		
+	}
 		
 
 }

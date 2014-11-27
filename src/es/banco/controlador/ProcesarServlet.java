@@ -14,14 +14,14 @@ import es.banco.modelo.Negocio;
 /**
  * Servlet implementation class RealizarPagoServlet
  */
-@WebServlet("/RealizarPago")
-public class RealizarPagoServlet extends HttpServlet {
+@WebServlet("/Procesar")
+public class ProcesarServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RealizarPagoServlet() {
+    public ProcesarServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,20 +32,20 @@ public class RealizarPagoServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String numero=request.getParameter("numero");
-		String contrasenha=request.getParameter("contrasenha");
+		int cupoMaximo=Integer.parseInt(request.getParameter("cupoMaximo"));
+		int cupoDisponible=Integer.parseInt(request.getParameter("cupoDisponible"));
+		String tipo=request.getParameter("tipo");
 		String numeroComprobacion=request.getParameter("numeroComprobacion");
-		int importe=Integer.parseInt(request.getParameter("importe"));
+		String contrasenha=request.getParameter("contrasenha");
+		int id=Integer.parseInt(request.getParameter("id"));
 		
-		//String tipo=request.getParameter("tipo");
-		//int id=Integer.parseInt(request.getParameter("id"));
-		
-		String comprobarPago=request.getParameter("enviar");
+		String actualizar=request.getParameter("actualizar");
 		Negocio negocio= new Negocio();
 		String n="";
 		
-		if(comprobarPago!=null)
+		if(actualizar!=null)
 		{
-			n=negocio.comprobarPago(numero, contrasenha, numeroComprobacion, importe);
+			n=negocio.actualizar(cupoDisponible, id);
 		}
 		//String mensaje=negocio.actualizar(id,matricula,marca,modelo,color,numCaballos,marchas);
 		request.setAttribute("mensaje", n);

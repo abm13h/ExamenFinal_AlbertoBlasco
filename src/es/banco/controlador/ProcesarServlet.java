@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import es.banco.modelo.Negocio;
+import es.banco.modelo.NegocioWS;
 
 /**
  * Servlet implementation class RealizarPagoServlet
@@ -40,7 +41,7 @@ public class ProcesarServlet extends HttpServlet {
 		int id=Integer.parseInt(request.getParameter("id"));
 		
 		String actualizar=request.getParameter("actualizar");
-		Negocio negocio= new Negocio();
+		NegocioWS negocio= new Negocio();
 		String n="";
 		
 		if(actualizar!=null)

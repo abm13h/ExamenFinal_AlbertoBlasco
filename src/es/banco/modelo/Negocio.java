@@ -6,8 +6,8 @@ import javax.jws.WebService;
 
 import es.banco.integracion.TarjetaCreditoDAO;
 import es.banco.modelo.TarjetaCredito;
-
-public class Negocio 
+@WebService(endpointInterface="es.concesionario.banco.NegocioWS")
+public class Negocio implements NegocioWS 
 {
 	private TarjetaCreditoDAO tarjetacreditodao = TarjetaCreditoDAO.getInstance();
 	
@@ -29,19 +29,12 @@ public class Negocio
 	        return tarjetacredito;
 	}
 
-          //public ArrayList<TarjetaCredito> consultarTodos() {
-            // //reglas...
-          //  //-....
-          // ArrayList<TarjetaCredito> coches=cochedao.consultarTodos();
-	      //  return coches;
-	      //}
-
-	//public ArrayList<TarjetaCredito> consultarMatricula(String matricula) {
-	//    ArrayList<TarjetaCredito> coches=cochedao.consultarMatricula(matricula);
-	//    return coches;
-	//}
-
-		
+    //public ArrayList<TarjetaCredito> consultarTodos() {
+    		
+	/* (non-Javadoc)
+	 * @see es.banco.modelo.NegocioWS#actualizar(int, int)
+	 */
+	@Override
 	public String actualizar(int cupoDisponible,
 				             int id) {
 			String msg;

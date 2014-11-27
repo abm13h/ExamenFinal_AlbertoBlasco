@@ -34,23 +34,27 @@ public class Negocio implements NegocioWS
 	/* (non-Javadoc)
 	 * @see es.banco.modelo.NegocioWS#actualizar(int, int)
 	 */
-	@Override
+	
 	public String actualizar(int cupoDisponible,
-				             int id) {
+				             int id) 
+	{
 			String msg;
 			int tarjetasactualizadas=tarjetacreditodao.actualizar(cupoDisponible, id);
 				msg="Tarjetas actualizadas :" + tarjetasactualizadas;
 			return msg;
-		}
-
-	public TarjetaParaPago comprobarPago(String numero, 
+	}
+	@Override
+	public String comprobarPago(String numero, 
 			             String contrasenha,
 			             String numeroComprobacion, 
 			             int importe) 
 	{
 	    
 	    TarjetaParaPago tarjetaparapago = tarjetacreditodao.consultarNumero(numero);
-	    return tarjetaparapago;
+		//TarjetaParaPago tarjetaparapago = negocio.consultarNumero(numero);
+	    
+		//return tarjetaparapago;
+	    return "";
 	    
 	    // Si el numero de tarjeta es correcto, comprobar 
 	    // si el resto de datos tecleados son correctos:

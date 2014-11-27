@@ -42,9 +42,9 @@ public class RealizarPagoServlet extends HttpServlet {
 		//String tipo=request.getParameter("tipo");
 		//int id=Integer.parseInt(request.getParameter("id"));
 		
-		String comprobarPago=request.getParameter("enviar");
+		//String comprobarPago=request.getParameter("enviar");
 		Negocio negocio= new Negocio();
-		TarjetaParaPago tarjetaparapago=negocio.comprobarPago(numero, contrasenha, numeroComprobacion, importe);
+		String tarjetaparapago=negocio.comprobarPago(numero, contrasenha, numeroComprobacion, importe);
 		
 		// meter la tarjeta en el request.. uso el metodo setAttribute
 	    request.setAttribute("tarjetaparapago", tarjetaparapago);

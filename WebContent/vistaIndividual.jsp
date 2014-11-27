@@ -11,6 +11,9 @@
 </head>
 <body>
 <form action="Procesar" method="get">
+ <h1>Puede modificar solamente el cupo disponible.</h1>
+ <br></br>
+ <br></br>
  <% TarjetaCredito tarjetacredito = (TarjetaCredito)request.getAttribute("tarjetacredito"); %>
 <table>
     <tr>
@@ -18,22 +21,30 @@
       <th>Cupo Máximo</th>
       <th>Cupo Disponible</th>
       <th>Tipo</th>
-      <th>Numero de Comprobación</th>
-      <th>Contraseña</th>
-      <th>Id</th>
    </tr>
-   <tr>
+    <tr>
       <td><input type="text" name="numero" value="<%=tarjetacredito.getNumero() %>" readonly="readonly"/></td>
       <td><input type="text" name="cupoMaximo" value="<%=tarjetacredito.getCupoMaximo() %>" readonly="readonly"/></td>
       <td><input type="text" name="cupoDisponible" value="<%=tarjetacredito.getCupoDisponible() %>"/></td>
       <td><input type="text" name="tipo" value="<%=tarjetacredito.getTipo() %>" readonly="readonly"/></td>
+   </tr>
+    <tr>  
+      <th>Numero de Comprobación</th>
+      <th>Contraseña</th>
+      <th>Id</th>
+   </tr>
+    <tr>   
       <td><input type="text" name="numeroComprobacion" value="<%=tarjetacredito.getNumeroComprobacion() %>" readonly="readonly"/></td>
       <td><input type="text" name="contrasenha" value="<%=tarjetacredito.getContrasenha() %>" readonly="readonly"/></td>
       <td><input type="text" name="id" value="<%=tarjetacredito.getId() %>" readonly="readonly"/></td>  
   </tr>
 </table>
+<br></br>
+ <br></br>
  <input class="botones" type="submit" value="Actualizar" id="actualizar" name="actualizar"/>
 </form>
+<br></br>
+<br></br>
   <a href="index.html">Ir a inicio</a>
 </body>
 </html>

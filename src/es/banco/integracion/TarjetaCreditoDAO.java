@@ -12,6 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
+
 import es.banco.modelo.TarjetaCredito;
 
 public class TarjetaCreditoDAO {
@@ -59,7 +60,7 @@ public class TarjetaCreditoDAO {
 	       public int darAlta(TarjetaCredito tarjetacredito) {
 	              int id=0;
 	            try {
-	                
+	                int ultimoID=0;
 	                //1. conectar
 	                conectar();
 	                //2.Preparar la sql (query)
@@ -71,6 +72,11 @@ public class TarjetaCreditoDAO {
 	                ps.setString(4, tarjetacredito.getTipo());
 	                ps.setString(5, tarjetacredito.getNumeroComprobacion());
 	                ps.setString(6, tarjetacredito.getContrasenha());
+	                
+	                //ultimoID=ultimoId();
+	                //ultimoID=ultimoID+1;
+	                //ps.setInt(7, ultimoID); // no se cómo se pone el valor de ultimoID
+	                
 	                ps.setInt(7, 0);
 	                
 	                //3. Ejecutar la consulta
@@ -99,7 +105,7 @@ public class TarjetaCreditoDAO {
 	        	     conectar();
 	          //2. preparar la consulta
 	               PreparedStatement ps;
-	               ps = cx.prepareStatement("SELECT * FROM banco WHERE ID=?");
+	               ps = cx.prepareStatement("SELECT * FROM tarjetacredito WHERE ID=?");
 	              // 2.1 setear los ?
 	                   ps.setInt(1, id);
 	                  // 3, ejecutar la consulta
@@ -164,17 +170,17 @@ public class TarjetaCreditoDAO {
 	    
 	    
 	    public int  ultimoId() {
-	    	int  idM=90;
+	    	int  id=0;
 	    	try {
 	    		//1. conectar
 	    		conectar();
 	    		//2. preparar la sentencia
-	    		PreparedStatement ps = cx.prepareStatement("SELECT MAX(ID) AS ULTIMO FROM COCHE");
+	    		PreparedStatement ps = cx.prepareStatement("SELECT MAX(ID) AS ULTIMO FROM tarjetacredito");
 	    		//3. ejecutar la consulta
 	    		ResultSet consulta = ps.executeQuery();
 	    		//4. bajar el resultado de la consulta y ponerlo en el arrayList
 	    		if(consulta.next()) {
-	    			idM=consulta.getInt("ULTIMO");
+	    			id=consulta.getInt("ULTIMO");
 	    		}
 	    		
 	    	} catch (SQLException e) {
@@ -188,7 +194,7 @@ public class TarjetaCreditoDAO {
                 //5.desconectar
                   desconectar();
             }
-	    	return idM;
+	    	return id;
 	    }
 	    //public ArrayList<TarjetaCredito> consultarMatricula(String matricula) {
 	    //	ArrayList<TarjetaCredito> coches= new ArrayList<TarjetaCredito>();
@@ -248,7 +254,7 @@ public class TarjetaCreditoDAO {
 	    	int filasAfectada=0;
 	    	try {
 	    		conectar();
-	    		PreparedStatement ps = cx.prepareStatement("UPDATE banco SET cupoDisponible=? WHERE ID=?");
+	    		PreparedStatement ps = cx.prepareStatement("UPDATE tarjetacredito SET cupoDisponible=? WHERE ID=?");
 	    		ps.setInt(1, cupoDisponible);
 	    		ps.setInt(2, id);
 	    		filasAfectada=ps.executeUpdate();

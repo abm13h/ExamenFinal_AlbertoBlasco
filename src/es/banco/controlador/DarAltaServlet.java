@@ -47,7 +47,7 @@ public class DarAltaServlet extends HttpServlet {
 		String n="";
 		Negocio negocio= new Negocio();
 	  //int id=negocio.DarAlta(numero, cupoMaximo, cupoDisponible, tipoBBDD, numeroComprobacion, contrasenha);
-		n=negocio.DarAlta(numero, cupoMaximo, cupoDisponible, tipoBBDD, numeroComprobacion, contrasenha);
+		n=negocio.DarAlta(numero, cupoMaximo, cupoDisponible, numeroComprobacion, tipoBBDD, contrasenha);
 		//TarjetaCredito e=negocio.consultarUno(id);
 		//request.setAttribute("tarjetacredito",e);
 		//redirigir a la vistaIndividual

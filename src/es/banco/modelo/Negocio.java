@@ -16,7 +16,7 @@ public class Negocio
 		  String msg;
 	      TarjetaCredito tarjetacredito= new TarjetaCredito(numero, cupoMaximo, cupoDisponible, tipo, numeroComprobacion, contrasenha);
 	      int tarjetasinsertadas=tarjetacreditodao.darAlta(tarjetacredito);
-		  msg="Tarjetas dadas de alta :" + tarjetasinsertadas;
+		  msg="Tarjeta dada de alta correctamente";
 		  return msg;
 		  
 	}

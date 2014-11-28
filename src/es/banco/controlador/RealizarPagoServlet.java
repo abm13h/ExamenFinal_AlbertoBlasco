@@ -11,8 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import es.banco.modelo.Negocio;
 import es.banco.modelo.TarjetaCredito;
-import es.banco.modelo.TarjetaParaPago;
-
 
 /**
  * Servlet implementation class RealizarPagoServlet

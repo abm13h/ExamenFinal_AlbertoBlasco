@@ -25,7 +25,6 @@ public class Negocio implements NegocioWS
 	{
 	       // validar si el q solicita la consulta tiene autorizacion
 	        TarjetaCredito tarjetacredito = tarjetacreditodao.consultarUno(id);
-	      
 	        return tarjetacredito;
 	}
 
@@ -43,18 +42,24 @@ public class Negocio implements NegocioWS
 				msg="Tarjetas actualizadas :" + tarjetasactualizadas;
 			return msg;
 	}
+	//@Override
+	public TarjetaCredito comprobarPago(String numero) 
+	{
+		 TarjetaCredito tarjetacredito = tarjetacreditodao.comprobarPago(numero);
+	     return tarjetacredito;
+    		  
+    	}
+
 	@Override
 	public String comprobarPago(String numero, 
-			             String contrasenha,
-			             String numeroComprobacion, 
-			             int importe) 
+			                    String contrasenha,
+			                    String numeroComprobacion, 
+			                    int importe) 
 	{
-	    
-	    TarjetaParaPago tarjetaparapago = tarjetacreditodao.consultarNumero(numero);
-		//TarjetaParaPago tarjetaparapago = negocio.consultarNumero(numero);
-	    
-		//return tarjetaparapago;
-	    return "";
+		return null;
+	}    
+       
+		//return "";
 	    
 	    // Si el numero de tarjeta es correcto, comprobar 
 	    // si el resto de datos tecleados son correctos:
@@ -66,9 +71,9 @@ public class Negocio implements NegocioWS
 	    //}else{
 	    //	msg="El número de la tarjeta sí existe.";
 	    //}
-	    //return msg;
+	    //return tarjetaparapago;
 	    	
 	} 
-	    //return tarjetacompra;
-}
+	    
+
 

@@ -1,5 +1,11 @@
 package es.banco.modelo;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
@@ -15,7 +21,8 @@ public interface NegocioWS
             String contrasenha,
             String numeroComprobacion, 
             int importe);
-	@WebMethod
+	
+    @WebMethod
 	public abstract String actualizar(
 			int cupoDisponible, 
 			int id);
